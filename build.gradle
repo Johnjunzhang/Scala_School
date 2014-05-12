@@ -1,32 +1,37 @@
-buildscript {
-    repositories{
-        maven{
-            url "https://raw.github.com/rodionmoiseev/maven-repo/master/repo/releases"
-        }
-    }
-    dependencies {
-        classpath group: 'org.rodion.gradle', name: 'idea-scala-plugin', version: '0.2'
-    }
-}
+apply plugin: 'scala'
+apply plugin: 'idea'
 
-// 'idea-scala-project' plugin includes the 'idea' plugin
-apply plugin: 'idea-scala-project'
+sourceCompatibility = 1.5
+version = '1.0'
 
-repositories{
+repositories {
     mavenCentral()
 }
 
+dependencies {
+    compile 'org.scala-lang:scala-compiler:2.10.3'
+    compile 'org.scala-lang:scala-library:2.10.3'
+    testCompile "org.scalatest:scalatest_2.10:2.0.1-SNAP"
+    testCompile "junit:junit:4.11"
+}
 
-dependencies{
-    // 'scalaApi' configuration is automatically added by the plugin
-    // All libraries in this configuration will be part of the 'scala-library'
-    // library in IntelliJ, a project-level library used by the Scala-facet.
-    // The library will be referenced by all Scala-facet modules.
-    scalaApi 'org.scala-lang:scala-library:2.10.3'
+subprojects {
+    group = 'com.training.collections.school'
+    version = '1.0.0'
 
-    // 'scalaTools' configuration is automatically added by the plugin
-    // All libraries in this configuration will be part of the 'scala-compiler'
-    // library in IntelliJ, a project-level library used by the Scala compiler.
-    scalaTools 'org.scala-lang:scala-library:2.10.3'
-    scalaTools 'org.scala-lang:scala-compiler:2.10.3'
+    apply plugin: 'scala'
+
+    sourceCompatibility = 1.7
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    dependencies {
+        compile 'org.scala-lang:scala-compiler:2.10.3'
+        compile 'org.scala-lang:scala-library:2.10.3'
+        testCompile "org.scalatest:scalatest_2.10:2.0.1-SNAP"
+        testCompile "junit:junit:4.11"
+    }
 }
