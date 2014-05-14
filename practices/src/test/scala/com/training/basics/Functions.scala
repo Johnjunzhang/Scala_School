@@ -17,8 +17,7 @@ class Functions extends FunSpec with Matchers{
 }
 
     it("should get 3 given call function addOne(2)") {
-      def addOne(number:Int, number1:Int) = number + 1
-//      val three = addOne(2, 1)
+//      val three = addOne(2)
 //      three should be(3)
     }
 
